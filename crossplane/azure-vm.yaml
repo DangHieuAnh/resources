@@ -1,11 +1,10 @@
-apiVersion: compute.platform.io/v1alpha1
-kind: AzureVM
+apiVersion: infra.platform.io/v1alpha1
+kind: AzureVMClaim
 metadata:
   name: my-dev-server
-  namespace: ns-tenant-domain    # ← auto-injected
 spec:
-  vmSize: "Standard_B2s"
   region: "eastus"
+  vmSize: "Standard_B2s"
   diskSizeGb: 64
-  providerConfigRef:
-    name: config-tenant-azure    # ← auto-injected
+  adminUsername: "devuser"
+  sshPublicKey: "ssh-rsa AAAAB3..."
