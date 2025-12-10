@@ -1,7 +1,11 @@
-apiVersion: compute.example.com/v1alpha1
-kind: VirtualMachine
+apiVersion: compute.platform.io/v1alpha1
+kind: AzureVM
 metadata:
-  name: my-tenant-vm
-  namespace: default
+  name: my-dev-server
+  namespace: ns-tenant-domain    # ← auto-injected
 spec:
-  location: US
+  vmSize: "Standard_B2s"
+  region: "eastus"
+  diskSizeGb: 64
+  providerConfigRef:
+    name: config-tenant-azure    # ← auto-injected
